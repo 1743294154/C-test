@@ -1,0 +1,247 @@
+实验10：
+1:
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+   int fac(int n);
+   int i,a,b,c,k;
+   scanf("%d%d%d",&a,&b,&c);
+   k=fac(a)+fac(b)+fac(c);
+    printf("%d",k);   
+    getch();
+    return 0;
+}
+
+int fac( int n)
+{
+    int a;
+    if(n>1)
+a=fac(n-1)*n;
+else if(n==1||n==0)
+a=1;
+else 
+a=-1;
+return a;
+}
+
+2:
+#include<stdio.h>
+#include<conio.h>
+int zheng( int n)
+{
+    int i,j;
+    
+     for(i=n;i!=0;i--)
+    {
+    for(j=0;j<i;j++)
+    printf("*");
+     printf("\n");
+     }
+    for(i=1;i<=n;i++)
+    {
+    for(j=1;j<=i;j++)
+    printf("*");
+     printf("\n");
+     }
+    
+    
+
+}
+
+int main()
+{
+   
+    int zheng( int n);
+    int n;
+    scanf("%d",&n);
+    zheng(n);
+    getch();
+    return 0;
+}
+3:
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+int n;
+int li(int n)
+{
+int i=0;
+if(n==1)
+return 0;
+for(i=2;i<sqrt(n);i++)
+{
+if(n%i==0)
+{
+return 0;
+}
+}
+return 1;
+}
+
+
+int main()
+{
+
+    int li(int b);
+    int n,b,f;
+  scanf("%d",&n);
+  
+   if( li(b)==1)
+   
+   printf("%d不是素数",n); 
+   
+    else
+    printf("%d是素数",n); 
+
+    getch();
+    return 0;
+}
+
+4:
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+double disc;
+double g(double a,double b,double c)
+{
+double x1,x2;
+
+x1=(-b+sqrt(disc))/(2.0*a);
+x2=(-b-sqrt(disc))/(2.0*a);
+printf("它有两个不相等的根：\n%8.4f\n %8.4f\n",x1,x2);
+}
+
+double k(double a,double b,double c)
+{
+double x1;
+x1=-b/(2*a);
+printf("它有一样的两个根：%8.4f\n",x1);
+}
+
+int main()
+{
+	double a,b,c,disc;
+	scanf("%lf%lf%lf",&a,&b,&c);
+	disc=b*b-4*a*c;
+	if(disc>0)
+	g(a,b,c);
+	else if(fabs(disc)<=1e-8)
+	k(a,b,c);
+	else
+	printf("无解");
+	getch();
+	return 0;
+	
+} 
+5;
+#include <stdio.h>
+#include<string.h>
+#include <stdlib.h>
+
+int main()
+{
+    int yueshu(int a,int b);
+    int beishu(int a,int b);
+    int c,d;
+    scanf("%d %d",&c,&d);
+    printf("zuidagokngyueshu");
+    yueshu(c,d);
+    printf("zuixiaogongbeishu");
+    beishu(c,d);  
+      system("pause");
+      return 0;
+}
+int yueshu(int a,int b)
+{
+    int i;
+    for(i=a;i>=1;i--)
+    if(a%i==0&&b%i==0)
+    break;
+    printf("%d\t",i);
+}
+
+int beishu(int a,int b)
+{
+    int j;
+    for(j=a;j>=1;j++)
+     if(j%a==0&&j%b==0)
+     break;
+      printf("%d\t",j);
+}           
+
+
+实验11
+1：
+#include<stdio.h>
+#include<conio.h>
+int f(int n)
+{
+    int z=0;
+    if(n==1)
+    z=1;
+    else if(n>1)
+    z=n*n+f(n-1); 
+    return(z);
+}
+
+
+int main()
+{
+    int n,a,b;
+    scanf("%d",&n);
+    a=f(n);
+    printf("%d",a);
+    getch();
+    return 0;
+}
+2：
+#include<stdio.h>
+#include<stdlib.h>
+
+
+int li(int a[3][3])
+{
+    int i,j;
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		printf("%5d",a[i][j]);
+		a[j][i]=a[i][j];
+		
+		printf("\n");
+	} 
+	printf("转换过后的数组"); 
+	printf("\n");
+	for(i=0;i<3;i++)
+		{
+		for(j=0;j<3;j++)
+		printf("%5d",a[j][i]);
+		printf("\n");
+}
+}
+
+int main()
+{
+	
+	int a[3][3];
+	int i,j,z,c,d;
+	for(i=0;i<3;i++)
+	for(j=0;j<3;j++)
+	scanf("%d",&a[i][j]);
+	printf("是这些数吗"); 
+	printf("\n");
+		for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		printf("%5d",a[i][j]);
+		printf("\n");
+	}
+	li(a);
+		
+
+	system("pause");
+	return 0;
+} 
+
+
