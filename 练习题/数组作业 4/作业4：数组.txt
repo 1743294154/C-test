@@ -1,0 +1,63 @@
+（注意：要抄题）
+
+1.以下数组赋值方法正确的是：（   ）。
+A int a[5]={1,2,3,4,5}; 	B int a[10]=1;	
+C int a[1];a[1]=5;	    D int b[10]=2;
+
+
+2.字符数组初始化赋值方式错误的有：（   ）。
+A char c[]={'c', ' ','p','r','o','g','r','a','m'};  
+B char c[]={"C program"}; 	
+C char c[]='C program'; 
+D char c[]="C program";
+
+
+3.下列描述中不正确的是(			)。
+A C语言的数组下标是从0开始计数的
+B 数组的数组名一定是数组第一个元素的地址
+C 初始化数组是，必须同时初始化所有的元素
+D 二维数组可以看作是一维的一维数组
+
+
+4.如果想对两个字符串进行比较可以使用的C语言库函数是（        ）。
+A strlen	B strcat	C strcpy	D strcmp
+
+
+5.设有说明语句：char a[ ]= “abc12”；则字符数组a (		      )。
+A 包含3个字符		  B 包含7个字符
+C 包含5个字符		  D 包含4个字符
+
+
+
+
+6.已知s1="hello",s2="hi",则strcmp(s1,s2)的值为（          ）。
+A 正数      B 零     C负数       D 不确定
+
+
+7.#include<stdio．h>
+#include<string．h>
+main()
+{char a[5][10]={"china","beijing","you","tiananmen","welcome”)；
+int i，j；char t[10]；
+for(i=0；i<4；i++)
+for(j=i+1；j<5；j++)
+if(strcmp(a[i]，a[j])>O)
+{strcpy(t，a[i])；strcpy(a[i]，a[j])；strcpy(a[j]，t)；}
+puts(a[3])；
+)
+程序运行后的输出结果是(    )。
+A)Beijing    B)china    C)welcome    D)Tiananmen
+
+
+8.有以下程序
+#include<stdio.h>
+main()
+{int a[5]={1,2,3,4,5},b[5]={0,2,1,3,0},i,s=0;
+for(i=1;i<3;i++) s=s+a[b[i]];
+printf(“%d\n”,s);
+}
+程序运行后的输出结果是
+Ａ）６     Ｂ）１０    Ｃ）１１      Ｄ）１５
+
+
+
