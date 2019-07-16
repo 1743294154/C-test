@@ -1,0 +1,273 @@
+①写一个判素数的函数，在主函数输入一个整数，输出是否素数的信息。
+ #include <stdio.h>
+ int main()
+ {int prime(int);                /* 函数原型声明 */
+  int n;
+  printf("input an integer:\n");
+  scanf("%d",&n);
+  if (prime(n))
+    printf("%d is a prime.\n",n);
+  else
+    printf("%d is not a prime.\n");
+  return 0;
+ }
+
+ int prime(int n)
+  {int flag=1,i;
+   for (i=2;i<n/2 && flag==1;i++)
+     if (n%i==0)
+       flag=0;
+   return(flag);
+  }
+
+
+②写两个函数，分别求两个整数的最大公约数和最小公倍数，用主函数调用这两个函数并输出结果。两个整数由键盘输入。
+  #include <stdio.h>
+  int main( )
+  {int hcf(int,int);
+   int lcd(int,int,int);
+   int u,v,h,l;
+   printf("Please input two numbers:\n");
+   printf("u="); 
+   scanf("%d",&u);
+   printf("v=");
+   scanf("%d",&v);
+   h=hcf(u,v);
+   printf("H.C.F=%d\n",h);
+   l=lcd(u,v,h);
+   printf("L.C.D=%d\n",l);
+   return 0;
+   }
+
+ int hcf(int u,int v)
+  {int t,r;
+   if (v>u)
+   {t=u;u=v;v=t;}
+   while ((r=u%v)!=0)
+   {u=v;
+    v=r;}
+   return(v);
+   }
+
+ int lcd(int u,int v,int h)
+  {
+  return(u*v/h);
+  }
+
+③写一函数fac(n) 求n!。在主函数中输入a，b，c三个整数，实现求a!+b!+c!的值并输出。
+  #include <iostream.h>
+  int main()
+  {int fac(int);               
+  int a,b,c,sum=0;
+  cout<<"enter a,b,c:";
+  cout<<"a=";cin>>a;
+  cout<<"b=";cin>>b;
+  cout<<"c=";cin>>c;
+  sum=sum+fac(a)+fac(b)+fac(c);
+  cout<<a<<"!+"<<b<<"!+"<<c<<"!="<<sum<<endl;  
+  return 0;
+  }
+  int fac(int n)
+  {int f=1;
+   for (int i=1;i<=n;i++)
+     f=f*i;
+   return f;
+  }
+
+④用递归方法求
+ f(n)= n2+f(n-1)  （n>1）
+       1          （n=1）
+#include <iostream.h>
+int main()
+{int f(int);
+ int n,s;
+ cout<<"input the number n:";
+ cin>>n;
+ s=f(n);
+ cout<<"The result is "<<s<<endl;
+ return 0;
+} 
+int f(int n)
+ {
+  if (n==1)
+     return 1;
+  else
+     return (n*n+f(n-1));
+}
+   
+                      
+⑤给出年、月、日，计算该日是该年的第几天？要求计算天数和判定闰年分别写两个函数,并用嵌套调用实现。
+#include <stdio.h>
+int leap(int year);
+int sum_day(int year,int month,int day);
+main()
+{
+ int year,month,day;
+ int days;
+ printf("\nPlease enter year-month-day: \n");
+ scanf("%d-%d-%d",&year,&month,&day);
+ printf("%d-%d-%d ",year,month,day);
+ days=sum_day(year,month,day);
+ printf("is the first %d days of the year.\n",days);
+}
+int leap(int year)
+{int leap;
+ leap=year%4==0 &&year%100!=0||year%400==0;
+ return(leap);
+}
+int sum_day(int year,int month,int day)
+{
+ int day_tab[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+ int i;
+ for(i=1;i<month;i++)
+   day+=day_tab[i];
+ if(leap(year)&&month>=3)         //函数的嵌套调用
+   day+=1;
+ return(day);
+}
+
+
+
+①编写一函数，由实参传来一个字符串，统计此字符串中字母、数字、空格和其它字符的个数，在主函数中输入字符串以及输出上述的结果。
+ int alph,digit,space,others;
+ int main()
+ {
+ char text[80];
+ printf("\nPlease enter a string:\n");
+ gets(text);
+ printf("string is:\n");
+ puts(text);
+ printf("\n");
+ alph=0;
+ digit=0;
+ space=0;
+ others=0;
+ count(text);
+ printf("alphabet=%d,digital=%d,space=%d,others=%d \n",alph,digit,space,others);
+ return 0;
+ }
+ count(char str[])
+{
+ int i;
+ for(i=0;str[i]!='\0';i++)
+   if((str[i]>='a' && str[i]<='z')||(str[i]>='A'&&str[i]<='Z'))
+       alph++;
+   else if(str[i]>='0' && str[i]<='9')
+       digit++;
+   else if(strcmp(str[i],' ')==0)
+       space++;
+   else
+       others++;
+}
+
+②写一函数，使给定的一个二维数组（3×3）转置，即行列互换。
+#define N 3
+#include <iostream.h>
+#include <iomanip.h>
+void  convert(int array[N][N])
+{
+int i,j,t;
+ for(i=0;i<N;i++)
+	  for(j=i+1;j<N;j++)
+	    {t=array[i][j];
+		     array[i][j]= array [j][i];
+		     array [j][i]=t;
+}
+ }
+
+void main()
+{
+int i,j;
+ int array[N][N];
+ cout<<"enter the 3*3 matrix:"<<endl;
+ for(i=0;i<N;i++)
+   for(j=0;j<N;j++)
+     cin>>array[i][j];
+ convert(array);
+ cout<<"after convert:"<<endl;
+ for(i=0;i<N;i++)
+   {
+for(j=0;j<N;j++)
+      cout<<setw(5)<<array[i][j];
+    cout<<"\n";
+   }
+} 
+
+③编写一函数显示如下规则的图形，每行‘*’号个数及输出行数由主函数输入n值控制。
+* * * 
+* * 
+* 
+* 
+* *
+* * *
+#include <iostream.h>
+void tuxing(int n)
+{
+ int i,j;
+ for(i=n;i>=1;i--)
+  {for(j=1;j<=i;j++)
+    cout<<"*";
+   cout<<endl;
+   }
+ for(i=1;i<=n;i++)
+  {for(j=1;j<=i;j++)
+    cout<<"*";
+   cout<<endl;
+   }
+  }
+ void main()
+ {int n;
+  cout<<"n=";
+  cin>>n;
+  tuxing(n);
+ }
+④求方程ax2+bx+c=0的根，用三个函数分别求当b2-4ac大于0、等于0和小于0时的根，并输出结果。从主函数输入a、b、c的值。
+#include <iostream.h>
+#include <math.h>
+float x1,x2,disc,p,q;
+void greater_than_zero(float a,float b)
+{
+ x1=(-b+sqrt(disc))/(2*a);
+ x2=(-b-sqrt(disc))/(2*a);
+ }
+void equal_to_zero(float a,float b)
+{ x1=x2=(-b)/(2*a);}
+void smaller_than_zero(float a,float b)
+{
+ p=-b/(2*a);
+ q=sqrt(-disc)/(2*a);
+ }
+void main()
+{
+ float a,b,c;
+ cout<<"Please input a,b,c:(a*x*x+b*x+c=0)\n";
+ cout<<"a=";
+ cin>>a;
+ cout<<"b=";
+ cin>>b;
+ cout<<"c=";
+ cin>>c;
+ cout<<"fang cheng wei:\n";
+ cout<<a<<"*x*x+"<<b<<"*x+"<<c<<"=0"<<endl;
+ disc=b*b-4*a*c;
+ if(disc>0)
+ {
+  greater_than_zero(a,b);
+  cout<<"x1="<<x1<<endl;
+  cout<<"x2="<<x2<<endl;
+  }
+ else if(disc==0)
+ {
+  equal_to_zero(a,b);
+  cout<<"x1="<<x1<<endl;
+  cout<<"x2="<<x2<<endl;
+  }
+ else
+ {
+  smaller_than_zero(a,b);
+  cout<<"x1="<<p<<"+"<<q<<"i"<<endl;
+  cout<<"x2="<<p<<"-"<<q<<"i"<<endl;
+  }
+}
+
+
